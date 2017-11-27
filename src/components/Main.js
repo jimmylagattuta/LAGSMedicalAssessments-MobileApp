@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { View, Text } from 'react-native';
+import { View, Text, ScrollView } from 'react-native';
 import { connect } from 'react-redux';
 import MainReady from './MainReady';
 import { getAssessments, sendAnswers } from '../actions/types';
@@ -154,9 +154,9 @@ class Main extends Component {
 		console.log('patient_name: ', this.state.patientName);
 
 		return (
-			<View>
+			<ScrollView>
 				{this.renderContent()}
-			</View>
+			</ScrollView>
 		);
 	}
 }
