@@ -28,6 +28,12 @@ class DassTwentyOne extends Component {
 		return (
 			<ScrollView>
 				<Text style={{ margin: 5, fontSize: 14 }}>Please read each statement and circle a number 0, 1, 2 or 3 which indicates how much the statement applied to you over the past week. There are no right or wrong answers. Do not spend too much time on any statement.</Text>
+				<Text style={{ margin: 5, fontSize: 12 }}>The reting scale is as follows.</Text>
+				<Text style={{ margin: 5, fontSize: 10 }}>0 = Did not apply to me at all</Text>
+				<Text style={{ margin: 5, fontSize: 10 }}>1 = Applied to me to some degree, or some of the time</Text>
+				<Text style={{ margin: 5, fontSize: 10 }}>2 = Applied to me a considerable degree or a good part of time</Text>
+				<Text style={{ margin: 5, fontSize: 10 }}>3 = Applied to me very much or most of the time</Text>
+
 				<FlatList
 					data={newList.content}
 					keyExtractor={(x, i) => i}
@@ -2449,7 +2455,7 @@ class DassTwentyOne extends Component {
 												<CheckBox
 													style={{ height: 2, width: 2, fontSize: 2, flexWrap: 'wrap' }}
 													name={item.question}
-													label='Did not apply to me at all'
+													label='Not at all'
 													onChange={(checked) => {
 														if (checked) {
 															console.log('checked', checked);
@@ -2482,8 +2488,7 @@ class DassTwentyOne extends Component {
 												<CheckBox
 													style={{ height: 2, width: 2, fontSize: 2, flexWrap: 'wrap' }}
 													name={item.question}
-													label='Applied to me to some
-														degree, or some of the time'
+													label='Some of the time'
 													onChange={(checked) => {
 														if (checked) {
 															console.log('checked', checked);
@@ -2516,8 +2521,7 @@ class DassTwentyOne extends Component {
 												<CheckBox
 													style={{ height: 2, width: 2, fontSize: 2, flexWrap: 'wrap' }}
 													name={item.question}
-													label='Applied to me to a
-														considerable degree or a good part of time'
+													label='Good part of the time'
 													onChange={(checked) => {
 														if (checked) {
 															console.log('checked', checked);
@@ -2550,8 +2554,7 @@ class DassTwentyOne extends Component {
 												<CheckBox
 													style={{ height: 2, width: 2, fontSize: 2, flexWrap: 'wrap' }}
 													name={item.question}
-													label='Applied to me very much
-														or most of the time'
+													label='Most of the time'
 													onChange={(checked) => {
 														if (checked) {
 															console.log('checked', checked);
@@ -2594,7 +2597,7 @@ class DassTwentyOne extends Component {
 												<CheckBox
 													style={{ height: 2, width: 2, fontSize: 2, flexWrap: 'wrap' }}
 													name={item.question}
-													label='Did not apply to me at all'
+													label='Not at all'
 													onChange={(checked) => {
 														if (checked) {
 															console.log('checked', checked);
@@ -2627,8 +2630,7 @@ class DassTwentyOne extends Component {
 												<CheckBox
 													style={{ height: 2, width: 2, fontSize: 2, flexWrap: 'wrap' }}
 													name={item.question}
-													label='Applied to me to some
-														degree, or some of the time'
+													label='Some of the time'
 													onChange={(checked) => {
 														if (checked) {
 															console.log('checked', checked);
@@ -2661,8 +2663,7 @@ class DassTwentyOne extends Component {
 												<CheckBox
 													style={{ height: 2, width: 2, fontSize: 2, flexWrap: 'wrap' }}
 													name={item.question}
-													label='Applied to me to a
-														considerable degree or a good part of time'
+													label='Good part of the time'
 													onChange={(checked) => {
 														if (checked) {
 															console.log('checked', checked);
@@ -2695,8 +2696,7 @@ class DassTwentyOne extends Component {
 												<CheckBox
 													style={{ height: 2, width: 2, fontSize: 2, flexWrap: 'wrap' }}
 													name={item.question}
-													label='Applied to me very much
-														or most of the time'
+													label='Most of the time'
 													onChange={(checked) => {
 														if (checked) {
 															console.log('checked', checked);
@@ -2739,7 +2739,7 @@ class DassTwentyOne extends Component {
 												<CheckBox
 													style={{ height: 2, width: 2, fontSize: 2, flexWrap: 'wrap' }}
 													name={item.question}
-													label='Did not apply to me at all'
+													label='Not at all'
 													onChange={(checked) => {
 														if (checked) {
 															console.log('checked', checked);
@@ -2772,8 +2772,7 @@ class DassTwentyOne extends Component {
 												<CheckBox
 													style={{ height: 2, width: 2, fontSize: 2, flexWrap: 'wrap' }}
 													name={item.question}
-													label='Applied to me to some 
-														degree, or some of the time'
+													label='Some of the time'
 													onChange={(checked) => {
 														if (checked) {
 															console.log('checked', checked);
@@ -2806,8 +2805,7 @@ class DassTwentyOne extends Component {
 												<CheckBox
 													style={{ height: 2, width: 2, fontSize: 2, flexWrap: 'wrap' }}
 													name={item.question}
-													label='Applied to me to a considerable
-														degree or a good part of time'
+													label='Good part of the time'
 													onChange={(checked) => {
 														if (checked) {
 															console.log('checked', checked);
@@ -2840,8 +2838,7 @@ class DassTwentyOne extends Component {
 												<CheckBox
 													style={{ height: 2, width: 2, fontSize: 2, flexWrap: 'wrap' }}
 													name={item.question}
-													label='Applied to me very much or 
-														most of the time'
+													label='Most of the time'
 													onChange={(checked) => {
 														if (checked) {
 															console.log('checked', checked);
