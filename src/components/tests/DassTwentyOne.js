@@ -2845,7 +2845,7 @@ class DassTwentyOne extends Component {
 															const q = item.question;
 															const newText = {
 																question: q,
-																answer: 'Applied to me very much or most of the time', 
+																answer: 'Applied to me very much or most of the time s', 
 																patient: this.props.patient,
 																assessment: this.props.assessment,
 																patientObject: this.props.patient_object,
