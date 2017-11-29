@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { View, Text, ScrollView } from 'react-native';
-import { Card, CardSection, Header, Button } from './common';
+import { Card, CardSection, Header, Button, Spinner } from './common';
 import { getAssessments, sendAnswers } from '../actions';
 import QualityOfLife from './tests/QualityOfLife';
 import ScreenerAndOpioidAssessment from './tests/ScreenerAndOpioidAssessment';
@@ -20,7 +20,8 @@ class MainReady extends Component {
 		headerTextPlaceholder: 'Choose Assessment',
 		email: '',
 		notes: [],
-		patient_object: []
+		patient_object: [],
+		loading: false
 	}
 
 	componentWillMount() {
@@ -34,6 +35,7 @@ class MainReady extends Component {
 
 	onButtonPress(title) {
 		// console.log('title onButtonPress ', title);
+
 		let toStateAsObject = [];
 		this.state.assessments.forEach((item) => {
 			if (item.title === title) {
@@ -49,11 +51,28 @@ class MainReady extends Component {
 	}
 
 	triggerGetAssessments() {
+		this.setState({ loading: true });
+
 		this.props.getAssessments()
 			.then((response) => {
 				console.log('response for email', response.payload.data[0].email);
-				this.setState({ assessments: response.payload.data[0].content, email: response.payload.data[0].email, patient_object: response.payload.data[0].patient });
+				this.setState({ assessments: response.payload.data[0].content, email: response.payload.data[0].email, patient_object: response.payload.data[0].patient, loading: false });
 			});
+	}
+
+	renderButton(title) {
+		if (this.state.loading) {
+			return (
+				<Spinner size="small" />
+			);
+		}
+
+		return (
+			<Button onPress={() => this.onButtonPress(title)}>
+				{title}
+			</Button>
+
+		);
 	}
 
 	renderAssessments() {
@@ -64,9 +83,7 @@ class MainReady extends Component {
 			this.state.assessments.map(assessment =>
 				<Card key={assessment.title}>
 					<CardSection>
-						<Button onPress={() => this.onButtonPress(assessment.title)}>
-							{assessment.title}
-						</Button>
+						{this.renderButton(assessment.title)}
 					</CardSection>
 				</Card>
 			)
