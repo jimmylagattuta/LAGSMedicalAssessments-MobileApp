@@ -188,9 +188,7 @@ class MainReady extends Component {
 			default:
 				return (
 					<View>
-						<ScrollView style={{ height: 360 }}>
-							{this.renderAssessments()}
-						</ScrollView>
+						{this.renderAssessments()}
 					</View>
 				);
 		}
