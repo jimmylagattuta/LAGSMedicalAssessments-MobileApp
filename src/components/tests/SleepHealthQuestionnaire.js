@@ -3,7 +3,7 @@ import CheckBox from 'react-native-checkbox';
 import axios from 'axios';
 import { FlatList, Text, TextInput, View, ScrollView } from 'react-native';
 // import QuestionTypeDetail from '../detailedcomponents/QuestionTypeDetail';
-import { Button } from '../common';
+import { Button, Spinner } from '../common';
 
 class SleepHealthQuestionnaire extends Component {
 	state = { 
@@ -14,13 +14,53 @@ class SleepHealthQuestionnaire extends Component {
 		packageToPackage: [],
 		packageForApi: [],
 		text: '',
-		finishedAssessmentId: null
+		finishedAssessmentId: null,
+		loading: false
 	};
 
 	componentWillMount() {
 		console.log('SleepHealthQuestionnaire props object: ', this.props.object.questions);
 		console.log('STATE', this.state);
 		console.log('PROPS', this.props);
+	}
+
+	onButtonPress() {
+		this.setState({ loading: true });
+		console.log('newText ', this.state.tempValue);
+		const pack = {
+			message: 'Finished',
+			assessment: this.props.assessment,
+			patient: this.props.patient,
+			question: this.state.tempValue
+		};
+		console.log('pack', pack);
+		axios.post('https:lags-assessments-mobileapp-api.herokuapp.com/api/v1/lagz_forms/assessments/answers', pack)
+			.then((response) => {
+				console.log('response!', response.data);
+				if (response.data.data === 'Finished') {
+					console.log('Finished');
+					this.props.setPage;
+				}
+			});
+	}
+
+	renderButton() {
+		if (this.state.loading) {
+			return (
+				<Spinner size="small" />
+			);
+		}
+
+		return (
+			<Button
+				style={{ paddingTop: 20 }}
+				onPress={() => {
+					this.onButtonPress();
+				}}
+			>
+				Done
+			</Button>
+		);	
 	}
 
 	renderQuestionType(newList) {
@@ -2953,29 +2993,7 @@ class SleepHealthQuestionnaire extends Component {
 						}
 					}}
 				/>
-				<Button
-					style={{ paddingTop: 20 }}
-					onPress={() => {
-						console.log('newText ', this.state.tempValue);
-						const pack = {
-							message: 'Finished',
-							assessment: this.props.assessment,
-							patient: this.props.patient,
-							question: this.state.tempValue
-						};
-						console.log('pack', pack);
-						axios.post('https:lags-assessments-mobileapp-api.herokuapp.com/api/v1/lagz_forms/assessments/answers', pack)
-							.then((response) => {
-								console.log('response!', response.data);
-								if (response.data.data === 'Finished') {
-									console.log('Finished');
-									this.props.setPage;
-								}
-							});
-					}}
-				>
-					Done
-				</Button>
+				{this.renderButton()}
 			</ScrollView>
 		);
 	}

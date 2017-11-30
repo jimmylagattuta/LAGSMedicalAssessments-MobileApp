@@ -14,13 +14,53 @@ class CurrentOpioidMisuseMeasure extends Component {
 		packageToPackage: [],
 		packageForApi: [],
 		text: '',
-		finishedAssessmentId: null
+		finishedAssessmentId: null,
+		loading: false
 	};
 
 	componentWillMount() {
 		console.log('Current Opiod misuse measure props object: ', this.props.object.questions);
 		console.log('STATE', this.state);
 		console.log('PROPS', this.props);
+	}
+
+	onButtonPress() {
+		this.setState({ loading: true });
+		console.log('newText ', this.state.tempValue);
+		const pack = {
+			message: 'Finished',
+			assessment: this.props.assessment,
+			patient: this.props.patient,
+			question: this.state.tempValue
+		};
+		console.log('pack', pack);
+		axios.post('https:lags-assessments-mobileapp-api.herokuapp.com/api/v1/lagz_forms/assessments/answers', pack)
+			.then((response) => {
+				console.log('response!', response.data);
+				if (response.data.data === 'Finished') {
+					console.log('Finished');
+					this.props.setPage;
+				}
+			});
+	}
+
+	renderButton() {
+		if (this.state.loading) {
+			return (
+				<Spinner size="small" />
+			);
+		}
+
+		return (
+			<Button
+				style={{ paddingTop: 20 }}
+				onPress={() => {
+					this.onButtonPress();
+				}}
+			>
+				Done
+			</Button>
+		);	
 	}
 
 	renderQuestionType(newList) {
@@ -2956,29 +2996,7 @@ class CurrentOpioidMisuseMeasure extends Component {
 						}
 					}}
 				/>
-				<Button
-					style={{ paddingTop: 20 }}
-					onPress={() => {
-						console.log('newText ', this.state.tempValue);
-						const pack = {
-							message: 'Finished',
-							assessment: this.props.assessment,
-							patient: this.props.patient,
-							question: this.state.tempValue
-						};
-						console.log('pack', pack);
-						axios.post('https:lags-assessments-mobileapp-api.herokuapp.com/api/v1/lagz_forms/assessments/answers', pack)
-							.then((response) => {
-								console.log('response!', response.data);
-								if (response.data.data === 'Finished') {
-									console.log('Finished');
-									this.props.setPage;
-								}
-							});
-					}}
-				>
-					Done
-				</Button>
+				{this.renderButton()}
 			</ScrollView>
 		);
 	}
