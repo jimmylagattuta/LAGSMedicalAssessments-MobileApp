@@ -114,6 +114,7 @@ class MainReady extends Component {
 								setPage={this.props.setPage}
 								patient_object={patient_object}
 								email={email}
+								onPressPage={this.props.onPressPage()}
 							/>
 						</View>
 					</ScrollView>
@@ -129,6 +130,7 @@ class MainReady extends Component {
 							setPage={this.props.setPage}
 							patient_object={patient_object}
 							email={email}
+							onPressPage={this.props.onPressPage()}
 						/>
 					</View>
 				);
@@ -143,6 +145,7 @@ class MainReady extends Component {
 							setPage={this.props.setPage}
 							patient_object={patient_object}
 							email={email}
+							onPressPage={this.props.onPressPage()}
 						/>
 					</View>
 				);
@@ -157,6 +160,7 @@ class MainReady extends Component {
 							setPage={this.props.setPage}
 							patient_object={patient_object}
 							email={email}
+							onPressPage={this.props.onPressPage()}
 						/>
 					</View>
 				);
@@ -171,6 +175,7 @@ class MainReady extends Component {
 							setPage={this.props.setPage}
 							patient_object={patient_object}
 							email={email}
+							onPressPage={this.props.onPressPage()}
 						/>
 					</View>
 				);
@@ -185,6 +190,7 @@ class MainReady extends Component {
 							setPage={this.props.setPage}
 							patient_object={patient_object}
 							email={email}
+							onPressPage={this.props.onPressPage()}
 						/>
 					</View>
 				);
@@ -199,6 +205,7 @@ class MainReady extends Component {
 							setPage={this.props.setPage}
 							patient_object={patient_object}
 							email={email}
+							onPressPage={this.props.onPressPage()}
 						/>
 					</View>
 				);

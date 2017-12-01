@@ -12,12 +12,17 @@ import reducers from './reducers';
 // import Router from './Router';
 import Main from './components/Main';
 
+const store = createStore(reducers, {}, applyMiddleware(promise, ReduxThunk));
+
 // Create a component
 class App extends Component {
 	state = { page: '' }
 
+	onPressPage() {
+		this.setState({ page: ' ' });
+	}
+
 	render() {
-		const store = createStore(reducers, {}, applyMiddleware(promise, ReduxThunk));
 
 		return (
 			<Provider store={store}>
