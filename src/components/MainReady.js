@@ -93,6 +93,7 @@ class MainReady extends Component {
 
 	renderContent() {
 		const { patient } = this.props;
+		const onPressPage = this.props.onPressPage;
 		const email = this.state.email;
 		const patient_object = this.state.patient_object;
 		console.log('STATE', this.state);
@@ -114,7 +115,7 @@ class MainReady extends Component {
 								setPage={this.props.setPage}
 								patient_object={patient_object}
 								email={email}
-								onPressPage={this.props.onPressPage()}
+								handler={this.setPage}
 							/>
 						</View>
 					</ScrollView>
@@ -130,7 +131,7 @@ class MainReady extends Component {
 							setPage={this.props.setPage}
 							patient_object={patient_object}
 							email={email}
-							onPressPage={this.props.onPressPage()}
+							handler={this.setPage}
 						/>
 					</View>
 				);
@@ -145,7 +146,7 @@ class MainReady extends Component {
 							setPage={this.props.setPage}
 							patient_object={patient_object}
 							email={email}
-							onPressPage={this.props.onPressPage()}
+							handler={this.setPage}
 						/>
 					</View>
 				);
@@ -160,7 +161,7 @@ class MainReady extends Component {
 							setPage={this.props.setPage}
 							patient_object={patient_object}
 							email={email}
-							onPressPage={this.props.onPressPage()}
+							handler={this.setPage}
 						/>
 					</View>
 				);
@@ -175,7 +176,7 @@ class MainReady extends Component {
 							setPage={this.props.setPage}
 							patient_object={patient_object}
 							email={email}
-							onPressPage={this.props.onPressPage()}
+							handler={this.setPage}
 						/>
 					</View>
 				);
@@ -190,7 +191,7 @@ class MainReady extends Component {
 							setPage={this.props.setPage}
 							patient_object={patient_object}
 							email={email}
-							onPressPage={this.props.onPressPage()}
+							handler={this.setPage}
 						/>
 					</View>
 				);
@@ -205,7 +206,7 @@ class MainReady extends Component {
 							setPage={this.props.setPage}
 							patient_object={patient_object}
 							email={email}
-							onPressPage={this.props.onPressPage()}
+							handler={this.setPage}
 						/>
 					</View>
 				);

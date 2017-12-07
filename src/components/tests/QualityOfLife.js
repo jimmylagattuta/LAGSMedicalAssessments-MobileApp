@@ -48,15 +48,16 @@ class QualityOfLife extends Component {
 			patient: this.props.patient,
 			question: this.state.tempValue
 		};
+		const { onPressPage } = this.props.onPressPage;
 		console.log('pack', pack);
 		axios.post('https:lags-assessments-mobileapp-api.herokuapp.com/api/v1/lagz_forms/assessments/answers', pack)
 			.then((response) => {
-				console.log('response!', response.data);
-				if (response.data.data === 'Finished') {
-					console.log('Finished');
-					this.props.onPressPage();
+				console.log('response! T-T', response.data);
+				if (response.data.message === 'Finished') {
+					console.log('Finished T_T');
+					this.props.setPage();
 				} else {
-					this.props.onPressPage();
+					this.props.setPage();
 				}
 			});
 	}

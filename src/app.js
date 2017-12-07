@@ -1,6 +1,7 @@
 //  index.js Placce code in here for IOS!!!
 
 // Import a library to help create a component 
+import { AppRegistry } from 'react-native';
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 import { View } from 'react-native';
@@ -11,6 +12,8 @@ import { Header } from './components/common';
 import reducers from './reducers';
 // import Router from './Router';
 import Main from './components/Main';
+import MainReady from './components/MainReady';
+
 
 const store = createStore(reducers, {}, applyMiddleware(promise, ReduxThunk));
 
@@ -28,7 +31,7 @@ class App extends Component {
 			<Provider store={store}>
 				<View>
 					<Header headerText="LAGS Medical Assessments" />
-					<Main page={this.state.page} />
+					<Main page={this.state.page} onPressPage={this.onPressPage.bind(this)} />
 				</View>
 			</Provider>
 		);
@@ -36,3 +39,5 @@ class App extends Component {
 }
 
 export default App;
+
+AppRegistry.registerComponent('LAGSMedicalAssessments', () => App);

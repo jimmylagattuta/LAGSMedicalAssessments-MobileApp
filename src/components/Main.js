@@ -70,7 +70,11 @@ class Main extends Component {
 
 	handler() {
 		this.setState({
-			page: ''
+			page: '',
+			patientName: '',
+			dateOfBirth: null,
+			email: '',
+			date: null
 		});
 	}
 

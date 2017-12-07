@@ -42,9 +42,9 @@ class PatientHealthQuestionnaire extends Component {
 				console.log('response!', response.data);
 				if (response.data.data === 'Finished') {
 					console.log('Finished');
-					this.props.onPressPage();
+					this.props.setPage();
 				} else {
-					this.props.onPressPage();
+					this.props.setPage();
 				}
 			});
 	}
